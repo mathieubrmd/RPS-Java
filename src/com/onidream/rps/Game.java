@@ -6,26 +6,56 @@ package com.onidream.rps;
 public class Game {
     private Player player;
     private Player computer;
+    private Scanner scanner;
+    private InputChecker inputChecker;
     private int rounds = 0;
 
-    public Game(Player player, Player computer, int rounds) {
+    public Game(Player player, Player computer) {
         this.computer = computer;
         this.player = player;
         this.rounds = rounds;
+        this.scanner = new Scanner();
+        this.inputChecker = new InputChecker();
     }
 
     public void run() {
+        System.out.print("How many rounds? ");
+
+        String roundsStr = this.scanner.readRoundNumber();
+
+
+        if (!this.inputChecker.checkRoundNumber(roundsStr)) {
+            this.run();
+            return;
+        }
+
+        this.rounds = Integer.parseInt(roundsStr);
+
+        System.out.println("Game started");
+
         for (int i = 0; i < this.rounds; i++) {
-            Boolean res = this.player.generateRandomAction().attack(this.computer.generateRandomAction());
 
-            if (res != null) {
-                if (!res) {
-                    this.computer.setScore(this.computer.getScore() + 1);
-                }
+            System.out.print("Make your choice for round " + i + ": ");
 
-                if (res) {
-                    this.player.setScore(this.player.getScore() + 1);
+            String actionName = this.scanner.readActionName();
+
+            if (this.inputChecker.checkActionType(actionName)) {
+                this.player.setCurrentAction(this.player.getActionFactory().createAction(actionName));
+
+                Boolean res = this.player.getCurrentAction().attack(this.computer.generateRandomAction());
+
+                if (res != null) {
+                    if (!res) {
+                        this.computer.setScore(this.computer.getScore() + 1);
+                    }
+
+                    if (res) {
+                        this.player.setScore(this.player.getScore() + 1);
+                    }
                 }
+            }
+            else {
+                i--;
             }
         }
 

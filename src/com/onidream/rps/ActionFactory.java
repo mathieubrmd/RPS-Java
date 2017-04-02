@@ -5,13 +5,13 @@ package com.onidream.rps;
  */
 public class ActionFactory {
     public AAction createAction(String actionName) {
-        if (actionName == "rock") {
+        if (actionName.equals("rock")) {
             return new Rock(AAction.ActionType.ROCK);
         }
-        if (actionName == "paper") {
+        if (actionName.equals("paper")) {
             return new Paper(AAction.ActionType.PAPER);
         }
-        if (actionName == "scissors") {
+        if (actionName.equals("scissors")) {
             return new Scissors(AAction.ActionType.SCISSORS);
         }
 

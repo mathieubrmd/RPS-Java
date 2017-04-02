@@ -18,11 +18,27 @@ public class Player {
         return actionFactory.createAction(randomEnum);
     }
 
+    public AAction getCurrentAction() {
+        return currentAction;
+    }
+
+    public void setCurrentAction(AAction currentAction) {
+        this.currentAction = currentAction;
+    }
+
     public int getScore() {
         return score;
     }
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public ActionFactory getActionFactory() {
+        return actionFactory;
+    }
+
+    public void setActionFactory(ActionFactory actionFactory) {
+        this.actionFactory = actionFactory;
     }
 }
