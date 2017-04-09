@@ -2,6 +2,8 @@ package com.onidream.rps;
 
 /**
  * Created by mathieubourmaud on 2017-04-03.
+ * Mathieu Bourmaud - 19941124-P335
+ * Martin Porrès - 19940926-P170
  */
 public class InputChecker {
     public Boolean checkRoundNumber(String roundsStr) {
@@ -31,7 +33,7 @@ public class InputChecker {
 
     public Boolean checkActionType(String actionName) {
 
-        System.out.println(actionName);
+        //System.out.println(actionName);
 
         if (!actionName.equals("rock") && !actionName.equals("scissors") && !actionName.equals("paper")) {
             System.err.println("\nThe action that you choose should be rock, scissors or paper.");

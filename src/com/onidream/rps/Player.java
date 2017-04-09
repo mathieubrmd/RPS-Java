@@ -4,6 +4,8 @@ import java.util.Random;
 
 /**
  * Created by mathieubourmaud on 2017-04-02.
+ * Mathieu Bourmaud - 19941124-P335
+ * Martin Porrès - 19940926-P170
  */
 public class Player {
     private AAction currentAction;
